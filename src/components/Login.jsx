@@ -2,12 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
-
-    const { logIn } = useContext(AuthContext);
+    const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -21,12 +21,25 @@ const Login = () => {
                 console.log(loggedUser);
                 setSuccess('You have Successfully Login')
             })
-            .catch(error =>{
+            .catch(error => {
                 setError(error)
             })
     }
 
-
+    const handleGoogleSignIn = () => {
+        logInWithGoogle()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+            })
+    }
+    const handleGithubSignIn = () => {
+        logInWithGithub()
+            .then(result => {
+                const loggedUser = result.user;
+                console.log(loggedUser)
+            })
+    }
     return (
         <div>
             <h1 className='text-center mt-4'>Please Login</h1>
@@ -46,8 +59,14 @@ const Login = () => {
                     Submit
                 </Button>
             </Form>
+            <div className='text-center my-4'>
+                <button onClick={handleGoogleSignIn} className='btn btn-outline-primary me-2'> <FaGoogle /> Sign In With Google</button>
+                <button onClick={handleGithubSignIn} className='btn btn-outline-success'> <FaGithub /> Sign In With Github</button>
+            </div>
+
             <p className='text-center'><small>If You are new Please <Link to='/register'>Register</Link> </small></p>
         </div>
+
     );
 };
 

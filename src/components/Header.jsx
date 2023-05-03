@@ -39,7 +39,7 @@ const Header = () => {
                         <span className="navbar-item">
                             <img style={{ height: '40px', width: '40px' }} className='rounded-circle' src={profile} alt="" />
                             {user
-                                ? <Link to="/" onClick={handleLogOut} className='text-white text-decoration-none ms-5'>Logout</Link>
+                                ? <Link to="/login" onClick={handleLogOut} className='text-white text-decoration-none ms-5'>Logout</Link>
                                 : <Link to="/login" className='text-white text-decoration-none ms-5'>Login</Link>
                             }
 
