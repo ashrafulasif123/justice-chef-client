@@ -1,8 +1,25 @@
-import React from 'react';
-import user from '../../public/user.jpg'
+import React, { useContext } from 'react';
+import profile from '../../public/user.jpg'
+import { Link } from 'react-router-dom';
+import { AuthContext } from './AuthProvider';
 
 const Header = () => {
+
+    const { user, logOut } = useContext(AuthContext);
+    
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(result =>{
+            console.log('LogOut')    
+        })
+        .catch(error =>{
+
+        }) 
+    }
     return (
+
+        
         <div>
             <nav className="navbar navbar-expand-lg bg-secondary">
                 <div className="container-fluid">
@@ -13,15 +30,20 @@ const Header = () => {
                     <div className="collapse navbar-collapse" id="navbarText">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active text-white" aria-current="page" href="#">Home</a>
+                                <Link to='/' className="nav-link active text-white" aria-current="page" href="#">Home</Link>
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link text-white" href="#">Blog</a>
                             </li>
                         </ul>
                         <span className="navbar-item">
-                            <img style={{ height: '40px', width: '40px' }}  className='rounded-circle' src={user} alt="" />
-                            <a href="" className='text-white text-decoration-none ms-5'>Login</a>
+                            <img style={{ height: '40px', width: '40px' }} className='rounded-circle' src={profile} alt="" />
+                            {user
+                                ? <Link to="/" onClick={handleLogOut} className='text-white text-decoration-none ms-5'>Logout</Link>
+                                : <Link to="/login" className='text-white text-decoration-none ms-5'>Login</Link>
+                            }
+
+
                         </span>
                     </div>
                 </div>

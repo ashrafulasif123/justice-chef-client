@@ -12,7 +12,7 @@ const SelectedChef = ({c}) => {
             <p className='fs-5'><span className='fw-semibold'>Year of Experience:</span>  {yearsOfExperience}</p>
             <p>Number of Recipes: {numberOfRecipes}</p>
             <p className='my-2'>Like</p>
-            <Link><button className='btn btn-secondary'>View Recipes Button</button></Link>
+            <Link to={`/chefrecipe/${id}`}><button className='btn btn-secondary'>View Recipes Button</button></Link>
         </div>
     );
 };
