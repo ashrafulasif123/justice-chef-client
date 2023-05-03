@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import profile from '../../public/user.jpg'
 import { Link } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
+import './style.css'
 
 const Header = () => {
 
@@ -37,7 +38,7 @@ const Header = () => {
                             </li>
                         </ul>
                         <span className="navbar-item">
-                            <img style={{ height: '40px', width: '40px' }} className='rounded-circle' src={profile} alt="" />
+                            { user && <img title={user.displayName} style={{ height: '40px', width: '40px' }} className='rounded-circle pointer-cur' src={user.photoURL} alt="" />}
                             {user
                                 ? <Link to="/login" onClick={handleLogOut} className='text-white text-decoration-none ms-5'>Logout</Link>
                                 : <Link to="/login" className='text-white text-decoration-none ms-5'>Login</Link>

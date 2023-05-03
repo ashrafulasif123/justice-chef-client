@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { getAuth } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import app from '../firebase/firebase.config';
 import { AuthContext } from './AuthProvider';
 
@@ -11,30 +11,42 @@ const auth = getAuth(app);
 
 
 const Register = () => {
-    const [success, setSuccess] = useState('')
+    const [success, setSuccess] = useState('');
+    const [result, setResult] = useState('')
 
-    const {createUser} = useContext(AuthContext)
-    const handleRegister = event =>{
+    const { createUser } = useContext(AuthContext)
+    const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
-        const name= form.name.value;
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.passowrd.value;
         const photo = form.photo.value;
         console.log(name, email, password, photo);
         createUser(email, password)
-        .then(result =>{
-            const loggedUser = result.user;
-            console.log(loggedUser)
-            setSuccess('You Have Successfully Registered')
-        })
-        .catch(error => {
-            console.log(error)
-        })
+            .then(result => {
+                const loggedUser = result.user;
+                setSuccess('You Have Successfully Registered');
+                updateUserDate(result.user, name, photo)
+            })
+            .catch(error => {
+                // console.log(error)
+            })
+       
 
 
     }
-
+    const updateUserDate = (user, name, photo) =>{
+        updateProfile(user, {
+            displayName:name, photoURL: photo
+        })
+        .then(() => {
+            // console.log('userName Updated')
+        })
+        .catch(error =>{
+            console.log(error)
+        })
+    } 
     return (
         <div onSubmit={handleRegister}>
             <h1 className='text-center mt-4'>Please Register</h1>

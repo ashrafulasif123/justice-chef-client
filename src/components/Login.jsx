@@ -18,7 +18,7 @@ const Login = () => {
         logIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser);
+                // console.log(loggedUser);
                 setSuccess('You have Successfully Login')
             })
             .catch(error => {
@@ -30,7 +30,7 @@ const Login = () => {
         logInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
-                console.log(loggedUser)
+                // console.log(loggedUser)
             })
     }
     const handleGithubSignIn = () => {
