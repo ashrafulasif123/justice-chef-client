@@ -40,6 +40,9 @@ const Login = () => {
                 const loggedUser = result.user;
                 // console.log(loggedUser)
             })
+            .catch(error =>{
+                console.log(error)
+            })
     }
     const handleGithubSignIn = () => {
         logInWithGithub()
