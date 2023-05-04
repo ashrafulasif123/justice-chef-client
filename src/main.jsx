@@ -17,16 +17,23 @@ import Register from './components/Register.jsx';
 import Login from './components/Login.jsx';
 import AuthProvider from './components/AuthProvider.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import ErrorPage from './components/ErrorPage.jsx';
+import Blog from './components/Blog.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: '/',
         element: <Home></Home>,
         loader: () => fetch('http://localhost:5000/chef')
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
       },
       {
         path: '/chefrecipe/:id',
