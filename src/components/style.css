@@ -5,3 +5,6 @@
 .pointer-cur{
     cursor: pointer !important;
 }
+.carousel-home{
+    height: 500px;
+}

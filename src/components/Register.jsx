@@ -81,10 +81,10 @@ const Register = () => {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                    Submit
+                    Register
                 </Button>
             </Form>
-            <p className='text-center'><small>If You are already registered <Link to='/login'>Login</Link> </small></p>
+            <p className='text-center'><small>If You are already registered <Link className='text-success' to='/login'>Login</Link> </small></p>
         </div>
     );
 };

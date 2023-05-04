@@ -35,7 +35,7 @@ const Header = () => {
                         
                     </Nav>
                     <Nav>
-                        {user && <img className='header-img rounded-circle me-3' src={user.photoURL} alt="" />}
+                        {user && <img title={user.displayName} className='header-img rounded-circle me-3' src={user.photoURL} alt="" />}
                         {
                             user
                                 ? <Link onClick={handleLogOut} to='/login'>Logout</Link>
