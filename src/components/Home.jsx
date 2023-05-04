@@ -13,8 +13,8 @@ const Home = () => {
                         <div className="row">
                             {
                                 chef.map(c => (
-                                    <div className="col-12 col-md-6">
-                                        <SelectedChef key={c.id} c={c}></SelectedChef>
+                                    <div key={c.id} className="col-12 col-md-6">
+                                        <SelectedChef c={c}></SelectedChef>
                                     </div>
                                 ))
                             }

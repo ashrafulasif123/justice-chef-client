@@ -65,7 +65,7 @@ const Login = () => {
                     <Form.Control className='mt-2' type="password" name='password' placeholder="Password" />
                 </Form.Group>
                 <Button variant="secondary" type="submit">
-                    Submit
+                    Login
                 </Button>
             </Form>
             <div className='text-center my-4'>
