@@ -38,10 +38,12 @@ const Login = () => {
         logInWithGoogle()
             .then(result => {
                 const loggedUser = result.user;
+                navigate(from)
                 // console.log(loggedUser)
             })
             .catch(error =>{
                 console.log(error)
+                
             })
     }
     const handleGithubSignIn = () => {
@@ -49,6 +51,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
+                navigate(from)
             })
     }
     return (

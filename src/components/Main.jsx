@@ -12,7 +12,7 @@ const Main = () => {
                 <span class="visually-hidden">Loading...</span>
             </div>}</div>
             <Outlet></Outlet>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
 
         </div>
     );
