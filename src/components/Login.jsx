@@ -1,13 +1,17 @@
 import React, { useContext, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
 import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const [success, setSuccess] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate()
     const { logIn, logInWithGoogle, logInWithGithub } = useContext(AuthContext);
+    const location = useLocation();
+    console.log('Login page Location', location)
+    const from = location.state?.from?.pathname || '/'
 
     const handleSignIn = event => {
         event.preventDefault();
@@ -15,14 +19,18 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         console.log(email, password)
+        form.reset();
+        setSuccess('')
+        setError('')
         logIn(email, password)
             .then(result => {
                 const loggedUser = result.user;
                 // console.log(loggedUser);
                 setSuccess('You have Successfully Login')
+                navigate(from)
             })
             .catch(error => {
-                setError(error)
+                setError(error.message)
             })
     }
 
@@ -44,6 +52,7 @@ const Login = () => {
         <div>
             <h1 className='text-center mt-4'>Please Login</h1>
             <h4 className='text-center text-success'>{success}</h4>
+            <h4 className='text-center text-danger'>{error}</h4>
             <Form onSubmit={handleSignIn} className='w-75 mx-auto border border-secondary rounded p-3 mt-2'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>

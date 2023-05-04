@@ -12,7 +12,7 @@ const auth = getAuth(app);
 
 const Register = () => {
     const [success, setSuccess] = useState('');
-    const [result, setResult] = useState('')
+    const [error, setError] = useState('')
 
     const { createUser } = useContext(AuthContext)
     const handleRegister = event => {
@@ -22,6 +22,13 @@ const Register = () => {
         const email = form.email.value;
         const password = form.passowrd.value;
         const photo = form.photo.value;
+        setError('')
+        setSuccess('')
+        form.reset();
+        if(password.length < 7){
+            setError('Password length more than 6')
+            return;
+        }
         console.log(name, email, password, photo);
         createUser(email, password)
             .then(result => {
@@ -51,20 +58,21 @@ const Register = () => {
         <div onSubmit={handleRegister}>
             <h1 className='text-center mt-4'>Please Register</h1>
             <h4 className='text-center text-success mt-3'>{success}</h4>
+            <h4 className='text-center text-danger mt-3'>{error}</h4>
             <Form className='w-75 mx-auto'>
                 <Form.Group controlId="formName">
                     <Form.Label>Name</Form.Label>
-                    <Form.Control type="text" name='name' placeholder="Enter name" />
+                    <Form.Control type="text" name='name' placeholder="Enter name"/>
                 </Form.Group>
 
                 <Form.Group controlId="formEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" name='email' placeholder="Enter email" />
+                    <Form.Control type="email" name='email' placeholder="Enter email" required/>
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" name='passowrd' placeholder="Password" />
+                    <Form.Control type="password" name='passowrd' placeholder="Password" required />
                 </Form.Group>
 
                 <Form.Group controlId="formPhotoUrl">
