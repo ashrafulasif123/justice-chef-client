@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import './style.css'
 import LazyLoad from 'react-lazy-load';
 
-const SelectedChef = ({c}) => {
+const SelectedChef = ({ c }) => {
 
-    const {chefName, id, chefPicture, numberOfRecipes, yearsOfExperience} = c;
-    
+    const { chefName, id, chefPicture, numberOfRecipes, yearsOfExperience } = c;
+
     return (
         <div className='mt-3 border border-secondary p-2 rounded text-center'>
-             <LazyLoad height={250}>
-             <img className='img-fluid w-100 rounded' style={{ height: '250px' }} src={chefPicture}  alt="" />
-    </LazyLoad>
-            
+           <LazyLoad>
+                <img className='img-fluid w-100 rounded' style={{ height: '250px' }} src={chefPicture} alt="" />
+            </LazyLoad>
+
             {/* <img className='img-fluid w-100 rounded' style={{ height: '250px' }} src={chefPicture}  alt="" /> */}
 
             <p className='text-center fw-bolder fs-3 my-2'>{chefName}</p>

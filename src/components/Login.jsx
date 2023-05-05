@@ -79,7 +79,7 @@ const Login = () => {
                 <button onClick={handleGithubSignIn} className='btn btn-outline-success'> <FaGithub /> Sign In With Github</button>
             </div>
 
-            <p className='text-center'><small>If You are new Please <Link className='text-success' to='/register'>Register</Link> </small></p>
+            <p className='text-center mb-4'><small>If You are new Please <Link className='text-success' to='/register'>Register</Link> </small></p>
         </div>
 
     );
