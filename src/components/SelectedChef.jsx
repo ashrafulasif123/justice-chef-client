@@ -18,7 +18,7 @@ const SelectedChef = ({ c }) => {
             <p className='text-center fw-bolder fs-3 my-2'>{chefName}</p>
             <p className='fs-5'><span className='fw-semibold'>Year of Experience:</span>  {yearsOfExperience}</p>
             <p>Number of Recipes: {numberOfRecipes}</p>
-            <p className='my-2'>Like</p>
+            <p className='my-2'>Like 4500</p>
             <Link to={`/chefrecipe/${id}`}><button className='btn btn-secondary'>View Recipes Button</button></Link>
         </div>
     );

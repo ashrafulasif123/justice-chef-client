@@ -27,7 +27,7 @@ const ChefRecipes = () => {
                 <p className='text-center fw-bolder fs-3 my-2'>{chefName}</p>
                 <p className='fs-5'><span className='fw-semibold'>Year of Experience:</span>  {yearsOfExperience}</p>
                 <p>Number of Recipes: {numberOfRecipes}</p>
-                <p className='my-2'>Like <FontAwesomeIcon icon={faThumbsUp} /> </p>
+                <p className='my-2'><FontAwesomeIcon icon={faThumbsUp} /> 4500 </p>
                 <div className="row">
                     {recipe.map(r =>
                         <div className='col-12 col-md-4 '>
